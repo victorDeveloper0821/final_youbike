@@ -11,6 +11,6 @@ def showData(sno):
 def showjson(sno):
     sno = str(sno)
     data = crawler.showStation(sno)
-    return render_template('station.html',ubike=data,station_number=sno)
+    return render_template('Station.html',ubike=data,station_number=sno)
 if __name__=='__main__':
     app.run(host='0.0.0.0',debug=True)
