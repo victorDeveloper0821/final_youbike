@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>測試render template data</title>
+	</head>
+	
+	<body>
+	{% if ubike %}
+		<table border=1>
+			{% for key,val in ubike.items(): %}
+				<tr>
+				<th>{{key}}</th>
+				<td>{{val}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<h1>The station {{station_number}} you find is not exist</h1>
+	{% endif %}
+	</body>
+</html>

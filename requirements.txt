@@ -1,0 +1,6 @@
+Flask==0.12
+SQLALchemy
+celery==4.1.0
+kombu==4.1.0
+gunicorn
+requests==2.14.2
