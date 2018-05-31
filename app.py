@@ -1,7 +1,9 @@
 from flask import Flask,render_template
 from modules import crawler
 app = Flask(__name__)
-
+@app.route('/')
+def home():
+    return 'Home Page'
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
     return render_template('visualData.html')
