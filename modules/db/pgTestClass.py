@@ -3,10 +3,10 @@ import os
 
 class DataConnection :
     def __init__(self) : 
-	    secret = os.environ.get('DB_secret',None)
+	    secret = str(os.environ.get('DB_secret',None))
 		secret = secret.split(':')
-		db_name = os.environ.get('DB_name',None)
-		db_host = os.environ.get('DB_host',None)
+		db_name = str(os.environ.get('DB_name',None))
+		db_host = str(os.environ.get('DB_host',None))
         try : 
             self.conn = pg.connect(user=secret[0],password=secret[1],port=5432,dbname=db_name,host=db_host)
             self.conn.autocommit = True
