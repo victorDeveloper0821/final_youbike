@@ -1,6 +1,12 @@
 from flask import Flask,render_template
 from modules import crawler
+from celeryTask import runSth
 app = Flask(__name__)
+
+@app.before_request
+def run():
+    runSth.delay()
+
 @app.route('/')
 def home():
     return 'Home Page'
