@@ -12,7 +12,7 @@ beat_schedule = {
     'testing':{
 	    'task':'celeryTask.add',
 		'schedule':timedelta(seconds=2)
-		'arg': (8,9)
+		'args': (8,9),
 	}
 
 }
