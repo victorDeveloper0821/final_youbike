@@ -67,7 +67,7 @@ def showAll():
 def putData(bike):
     a = pgTestClass.DataConnection()
     for tup in bike:
-        a.insert_data('bike_station01',tup)
+        a.insert_data('bike_station',tup)
     a.conn.commit()
     a.cursor.close()
     a.conn.close()
