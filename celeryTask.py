@@ -6,3 +6,6 @@ app.config_from_object('celeryConfig')
 @app.task
 def runSth():
     print('run something in flask !')
+@app.task
+def add(a,b):
+    return a+b
