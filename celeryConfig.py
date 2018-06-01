@@ -10,9 +10,12 @@ enable_utc = True
 
 beat_schedule = {
     'testing':{
-	    'task':'celeryTask.add',
-		'schedule':timedelta(seconds=2),
-		'args': (8,9)
-	}
-
+        'task':'celeryTask.add',
+        'schedule':timedelta(seconds=2),
+        'args': (8,9)
+    },
+    'crawler':{
+        'task':'celeryTask.runCrawler',
+        'schedule':timedelta(seconds=180)
+    }
 }

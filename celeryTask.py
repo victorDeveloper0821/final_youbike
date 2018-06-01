@@ -9,3 +9,10 @@ def runSth():
 @app.task
 def add(a,b):
     return a+b
+@app.task
+def runCrawler():
+    print('begin to run crawler')
+    dataSet = crawler.showAll()
+    print('get ubike data')
+    crawler.putData(dataSet)
+    print('insert complete')
