@@ -1,9 +1,14 @@
 import psycopg2 as pg 
+import os
 
 class DataConnection :
     def __init__(self) : 
+	    secret = os.environ.get('DB_secret',None)
+		secret = secret.split(':')
+		db_name = os.environ.get('DB_name',None)
+		db_host = os.environ.get('DB_host',None)
         try : 
-            self.conn = pg.connect(user='victor',password='pythontest12345',port=5400,dbname='testing')
+            self.conn = pg.connect(user=secret[0],password=secret[1],port=5432,dbname=db_name,host=db_host)
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
             print('set up connection')
@@ -22,7 +27,7 @@ class DataConnection :
         rows = self.cursor.fetchall()
         return rows    
 if __name__ == '__main__' : 
-    testdata = ('victor','pythontest12345',5400) # 0->user , 1->passwd , 2->port number
+#    testdata = ('victor','pythontest12345',5400) # 0->user , 1->passwd , 2->port number
     Connection = DataConnection()
     print('setup database : testing')
     r = Connection.query_all('bike_station01','station_0001')
