@@ -59,7 +59,7 @@ def showAll():
     for i in ubike_data:
         sid = '\''+'station_'+str(i['sno'])+'\''
         post_id = '\''+'post_'+areaTocode(i['sarea'])+'\''
-        stampTime = '\''+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\''
+        stampTime = '\''+datetime.datetime.now()+datetime.timedelta(hours=8).strftime("%Y-%m-%d %H:%M:%S")+'\''
         dSet = (sid,'\''+i['sna']+'\'',i['tot'],i['sbi'],post_id,stampTime,i['act'],i['bemp'],'\''+i['ar']+'\'')
 #        print(dSet)
         empList.append(dSet)
@@ -77,4 +77,4 @@ if __name__=='__main__':
 # When the python file is excuted as a single script , the following codes are excuted .
     a = showAll()    
 #    print(showStation('0310'))
-    putData(a)
+    print(a)
