@@ -1,7 +1,7 @@
 from module.db import pgTestClass as pgdb
 
 def preload():
-x = pgdb()
+    x = pgdb()
     print('load district data')
     x.preload_data()
     x.conn.commit()
