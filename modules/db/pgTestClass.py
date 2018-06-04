@@ -9,14 +9,26 @@ class DataConnection :
         db_host = str(os.environ.get('DB_host',None))
         try : 
             self.conn = pg.connect(user=secret[0],password=secret[1],port=5432,dbname=db_name,host=db_host)
-            self.conn.autocommit = True
             self.cursor = self.conn.cursor()
             print('set up connection')
         except:
             print('connection error')
-    def create_database(self,dbname):
-        self.cursor.execute('create database '+dbname+';')
-        self.conn.close()
+    def preload_data(self,data):
+        if self.conn ==None : 
+            print('connection = None')
+            pass
+        if data == None:
+            print('data are not available')
+            pass
+        for d in data:
+            cmd  = "insert into district values ("+",".join(d)+");"
+            self.cursor.execute(cmd)
+    def truncate_data(self,table='bike_station'):
+        if self.conn ==None : 
+            print('connection = None')
+            pass
+        cmd = "truncate table %s ;"%table
+        self.cursor.execute(cmd)
     def insert_data(self,table,value):
         cmd = "INSERT INTO "+table+" (sno,name,total,sbi,district_id,mdatetime,act,bemp,addr) VALUES ("+",".join(value)+") ;"
         print(cmd)
