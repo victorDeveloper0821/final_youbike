@@ -1,4 +1,4 @@
-from module.db import pgTestClass as pgdb
+from modules.db import pgTestClass as pgdb
 
 def preload():
     x = pgdb()
