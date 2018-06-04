@@ -1,7 +1,7 @@
-from modules.db import pgTestClass as pgdb
+from modules.db import pgTestClass
 
 def preload(dist):
-    x = pgdb()
+    x = pgTestClass()
     print('load district data')
     x.preload_data(dist)
     x.conn.commit()
@@ -10,7 +10,7 @@ def preload(dist):
     x.conn.close()
 
 def truncate():
-    x = pgdb()
+    x = pgTestClass()
     print('truncate data')
     x.truncate_data()
     x.conn.commit()
