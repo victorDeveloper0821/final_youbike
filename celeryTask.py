@@ -20,7 +20,7 @@ def runCrawler():
 @app.task
 def runAnalyse(sno,sdate):
     run = conn()
-	print('begin to run analyzer')
-	dtime,avg_sbi = run.avg_use_rate(sno,sdate)
-	print('done')
-	return dtime,avg_sbi
+    print('begin to run analyzer')
+    dtime,avg_sbi = run.avg_use_rate(sno,sdate)
+    print('done')
+    return dtime,avg_sbi
