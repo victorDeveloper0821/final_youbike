@@ -1,6 +1,6 @@
 from flask import Flask,render_template
 from modules import crawler
-from celeryTask import runSth
+from celeryTask import runSth,runAnalyse
 app = Flask(__name__)
 
 @app.before_request
@@ -12,6 +12,7 @@ def home():
     return 'Home Page'
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
+    dtime,avg = runAnalyse.delay(sno,date='2018-06-05')
     return render_template('visualData.html')
 @app.route('/api/data/<sno>',methods=['GET'])
 def showjson(sno):
