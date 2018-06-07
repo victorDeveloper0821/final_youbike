@@ -1,6 +1,6 @@
 from celery import Celery
 from modules import crawler 
-from modules.db import pgTestClass
+from modules import db
 app = Celery('async_runner')
 app.config_from_object('celeryConfig')
 
@@ -19,7 +19,7 @@ def runCrawler():
     print('insert complete')
 @app.task
 def runAnalyse(sno,sdate):
-    run = pgTestClass()
+    run = db.pgTestClass()
     print('begin to run analyzer')
     dtime,avg_sbi = run.avg_use_rate(sno,sdate)
     print('done')
