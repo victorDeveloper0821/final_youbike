@@ -6,14 +6,14 @@ app = Flask(__name__)
 @app.before_request
 def run():
     runSth.delay()
-
 @app.route('/')
 def home():
     return 'Home Page'
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
     d = '2018-06-05'
-    dtime,avg = runAnalyse.delay(sno,d)
+    res = runAnalyse.delay(sno,d)
+    dtime,avg = res.result
     print(dtime,avg)
     return render_template('visualData.html')
 @app.route('/api/data/<sno>',methods=['GET'])
