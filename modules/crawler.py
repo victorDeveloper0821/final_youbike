@@ -68,10 +68,11 @@ def showAll():
     ubike_data = data['retVal'].values()
     dSet = tuple()
     empList = []
+    n = datetime.datetime.now()+datetime.timedelta(hours=8)
     for i in ubike_data:
         sid = '\''+'station_'+str(i['sno'])+'\''
         post_id = '\''+'post_'+areaTocode(i['sarea'])+'\''
-        stampTime = '\''+datetime.datetime.now()+datetime.timedelta(hours=8).strftime("%Y-%m-%d %H:%M:%S")+'\''
+        stampTime = '\''+n.strftime("%Y-%m-%d %H:%M:%S")+'\''
         dSet = (sid,'\''+i['sna']+'\'',i['tot'],i['sbi'],post_id,stampTime,i['act'],i['bemp'],'\''+i['ar']+'\'')
 #        print(dSet)
         empList.append(dSet)
