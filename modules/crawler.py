@@ -43,7 +43,7 @@ def showStation(sno):
     d['bemp'] = info.get('bemp')
     d['lng'] = info.get('lng')
     d['lat'] = info.get('lat')
-    d['mday'] ='\''+datetime.datetime.now()+datetime.timedelta(hours=8).strftime("%Y-%m-%d %H:%M:%S")+'\''
+    d['mday'] =datetime.datetime.now()+datetime.timedelta(hours=8).strftime("%Y-%m-%d %H:%M:%S")
 
     return d
 def areaTocode(sname):
