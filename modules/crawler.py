@@ -62,6 +62,8 @@ def areaTocode(sname):
         '松山區':'105',
         '文山區':'116',
     }[sname]
+
+#所有插入資料用list儲存     
 def showAll():
     ubike_data = data['retVal'].values()
     dSet = tuple()
@@ -74,6 +76,8 @@ def showAll():
 #        print(dSet)
         empList.append(dSet)
     return empList
+
+# 以tuple為單位放入資料
 def putData(bike):
     a = pgTestClass.DataConnection()
     for tup in bike:
@@ -82,6 +86,7 @@ def putData(bike):
     a.cursor.close()
     a.conn.close()
     print('data are inserted')
+
 if __name__=='__main__':
 # codes used for testing the functions .
 # When the python file is excuted as a single script , the following codes are excuted .

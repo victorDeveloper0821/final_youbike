@@ -10,6 +10,7 @@ def runSth():
 @app.task
 def add(a,b):
     return a+b
+# 定期爬youbike各站資料
 @app.task
 def runCrawler():
     print('begin to run crawler')
@@ -17,6 +18,8 @@ def runCrawler():
     print('get ubike data')
     crawler.putData(dataSet)
     print('insert complete')
+
+# 計算使用率並顯示於flask
 @app.task
 def runAnalyse(sno,sdate):
     run = ptc.DataConnection()
