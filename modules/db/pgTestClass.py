@@ -56,16 +56,20 @@ class DataConnection :
         index = 0
         for cmd in cmd_list:
             rows = self.cursor.execute(cmd)
+            rows = self.cursor.fetchall()
             temp = 0
-            avg_sbi = 0
-            if rows == None or len(rows)==0:
+            ave_sbi = 0
+            if rows == None:
                 ave_sbi=0
                 sbi_list.append(ave_sbi)
             else:
                 for row in rows:
                     temp=temp+1
                     ave_sbi=row[3]+ave_sbi
-                ave_sbi=ave_sbi/temp
+                if temp==0:
+                    ave_sbi=0
+                else:
+                    ave_sbi=ave_sbi/temp
                 sbi_list.append(ave_sbi)
             period[index]=search_date+period[index]
             index+=1
@@ -80,6 +84,6 @@ if __name__ == '__main__' :
     print('setup database : testing')
 #    r = Connection.query_all('bike_station01','station_0001')
 #    print(r)
-    a,b = Connection.avg_use_rate('0345','2018-06-04')
+    a,b = Connection.avg_use_rate('0368','2018-06-05')
     print(a)
     print(b)

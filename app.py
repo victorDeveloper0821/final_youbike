@@ -13,6 +13,7 @@ def home():
 def showData(sno):
     d = '2018-06-05'
     res = runAnalyse.delay(sno,d)
+    sname = crawler.showSingleVal(sno,'sna')
     dtime,avg = res.get()
     print(dtime,avg)
     return render_template('visualData.html')

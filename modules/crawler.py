@@ -15,7 +15,16 @@ r = requests.get('http://data.taipei/youbike')
 s = StringIO(r.text)
 data = json.loads(r.text)
 
-
+def showSingleVal(sno,key):
+    if data['retCode'] != 1 :
+        print('unexpect error')
+        return None
+    info = data['retVal'].get(sno)
+    if info.has_key(key):
+        return info['key']
+    else :
+        print('key:%s dosent exist'%key)
+        return None
 def showStation(sno):
     d = dict()
     if data['retCode'] != 1 :
@@ -34,7 +43,7 @@ def showStation(sno):
     d['bemp'] = info.get('bemp')
     d['lng'] = info.get('lng')
     d['lat'] = info.get('lat')
-    d['mday'] = stampTime = '\''+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\''
+    d['mday'] = stampTime = '\''+datetime.datetime.now()+datetime.timedelta(hours=8).strftime("%Y-%m-%d %H:%M:%S")+'\''
 
     return d
 def areaTocode(sname):
