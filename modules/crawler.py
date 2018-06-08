@@ -21,7 +21,7 @@ def showSingleVal(sno,key):
         return None
     info = data['retVal'].get(sno)
     if info.has_key(key):
-        return info['key']
+        return info[key]
     else :
         print('key:%s dosent exist'%key)
         return None
