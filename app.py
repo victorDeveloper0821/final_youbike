@@ -1,5 +1,6 @@
 from flask import Flask,render_template
 from modules import crawler
+from datetime import datetime,timedelta
 from celeryTask import runSth,runAnalyse
 app = Flask(__name__)
 
@@ -11,11 +12,20 @@ def home():
     return 'Home Page'
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
-    d = '2018-06-05'
-    res = runAnalyse.delay(sno,d)
+    countDown = 4
+    date_list = []
+    avg_list = []
+    while countDown>1:
+        d = datetime.now().date()-timedelta(days=countDown)
+        x = d.strftime('%Y-%m-%d')
+        res = runAnalyse.delay(sno,x)
+        dtime,avg = res.get()
+        date_list = date_list+dtime
+        avg_list = avg_list+avg
+        countDown = countDown-1
+#    d = '2018-06-05'
     sname = crawler.showSingleVal(sno,'sna')
-    dtime,avg = res.get()
-    print(dtime,avg)
+    print(date_list,avg_list)
     return render_template('visualData.html')
 @app.route('/api/data/<sno>',methods=['GET'])
 def showjson(sno):
