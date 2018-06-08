@@ -13,7 +13,7 @@ def home():
 def showData(sno):
     d = '2018-06-05'
     res = runAnalyse.delay(sno,d)
-    dtime,avg = res.result
+    dtime,avg = res.get()
     print(dtime,avg)
     return render_template('visualData.html')
 @app.route('/api/data/<sno>',methods=['GET'])
