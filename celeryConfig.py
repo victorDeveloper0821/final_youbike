@@ -16,6 +16,6 @@ beat_schedule = {
     },
     'crawler':{
         'task':'celeryTask.runCrawler',
-        'schedule':timedelta(minutes=30)
+        'schedule':timedelta(minutes=10)
     }
 }

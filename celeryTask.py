@@ -4,10 +4,10 @@ from modules.db import pgTestClass as ptc
 app = Celery('async_runner')
 app.config_from_object('celeryConfig')
 
-@app.task
+@app.task(ignore_result=True)
 def runSth():
     print('run something in flask !')
-@app.task
+@app.task(ignore_result=True)
 def add(a,b):
     return a+b
 # 定期爬youbike各站資料
@@ -20,7 +20,7 @@ def runCrawler():
     print('insert complete')
 
 # 計算使用率並顯示於flask
-@app.task
+@app.task(ignore_result=True)
 def runAnalyse(sno,sdate):
     run = ptc.DataConnection()
     print('begin to run analyzer')
