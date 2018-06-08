@@ -20,7 +20,7 @@ def showSingleVal(sno,key):
         print('unexpect error')
         return None
     info = data['retVal'].get(sno)
-    if info.has_key(key):
+    if key in info.keys():
         return info[key]
     else :
         print('key:%s dosent exist'%key)
