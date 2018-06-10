@@ -1,5 +1,6 @@
 from celery import Celery
 from modules import crawler 
+from datetime import datetime,timedelta
 from modules.db import pgTestClass as ptc
 app = Celery('async_runner')
 app.config_from_object('celeryConfig')
