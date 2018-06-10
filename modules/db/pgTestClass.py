@@ -36,7 +36,7 @@ class DataConnection :
         sbi_list = []
         index = 0
         for cmd in cmd_list:
-            rows = self.cursor.execute(cmd)
+            self.cursor.execute(cmd)
             rows = self.cursor.fetchall()
             temp = 0
             ave_sbi = 0
