@@ -32,7 +32,7 @@ class DataConnection :
         " 16:%:%' OR MDATETIME::text LIKE '"+search_date+" 17:%:%' OR MDATETIME::text LIKE '"+search_date+" 18:%:%');","SELECT * FROM bike_station WHERE sno="+'\'station_'+search_sno\
         +'\''+" AND (MDATETIME::text LIKE '"+search_date+" 19:%:%' OR MDATETIME::text LIKE '"+search_date+" 20:%:%' OR MDATETIME::text LIKE '"+search_date+" 21:%:%' OR MDATETIME::text LIKE '"\
         +search_date+" 22:%:%' OR MDATETIME::text LIKE '"+search_date+" 23:%:%');"]
-        period = ['早上','中午','下午']
+        period = ['早上','下午','晚上']
         sbi_list = []
         index = 0
         for cmd in cmd_list:
