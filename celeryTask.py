@@ -21,7 +21,7 @@ def runCrawler():
     print('insert complete')
 
 # 計算使用率並顯示於flask
-@app.task(ignore_result=True)
+@app.task(ignore_result=True,default_retry_delay=30, max_retries=3, soft_time_limit=10000)
 def runAnalyse(sno):
     countDown = 4
     date_list = []
