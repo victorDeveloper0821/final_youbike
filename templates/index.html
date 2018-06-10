@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>YouBike 資料視覺化 期末專案</title>    
+		<link rel="stylesheet" type="text/css" href={{url_for('static', filename='index.css')}}>
+    </head>
+    <body>
+		<div class='wrap'>
+	<header>
+        <div class='TopBar'>
+			<div id='logo'>
+                <span>
+                <img class='icon' src={{url_for('static', filename='bike.png')}}></img>
+                <h1 id='title'>YouBike Data Visualization</h1>
+                </span>
+            </div>
+			<div id='content'>
+                <div id='inner'>
+                    <h2>專案描述</h2>
+                    <p>統計台北市各站youbike站點使用率與即時車位數量查詢</p>
+                    <p>統計方式取一天的早上,中午,晚上的車位數量平均</p>
+                    <h2>利用技術及資料</h2>
+                    <ul>chart.JS</ul>
+                    <ul>台北市政府youbike即時資訊</ul>
+                    <ul>python Flask</ul>
+                </div>
+            </div>
+		</div>
+	</header>
+
+    <div class='covers'><!-- div+span(包圖片) -->
+		<h1>這是封面區</h1>
+		</div>
+<!--
+        <div class='buttom'>
+		<div id='hub'>
+            <span><img class='icon' src='GitHub.png'></img></span>
+            <h4><a href='https://github.com/victorlikecode/final_youbike'>GitHub</a></h4>
+        </div>
+        <div id='email'>
+            <span><img class='icon' src='email-icon.png'></img></span>
+            <h4><a href="mailto:princeoftennis735@gmail.com">Contact us</a></h4>        
+        </div>
+        </div>
+-->
+	</div>
+    </body>
+
+</html>
