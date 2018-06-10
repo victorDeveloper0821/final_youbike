@@ -13,13 +13,12 @@ def home():
     return render_template('index.html')
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
-"""
-    res = runAnalyse.delay(sno)
-    date_list,avg_list = res.get()
-    sname = crawler.showSingleVal(sno,'sna')
-    addr = crawler.showSingleVal(sno,'ar')
-    print(date_list,avg_list)
-"""
+    
+#    res = runAnalyse.delay(sno)
+#    date_list,avg_list = res.get()
+#    sname = crawler.showSingleVal(sno,'sna')
+#    addr = crawler.showSingleVal(sno,'ar')
+#    print(date_list,avg_list)
     sname = crawler.showSingleVal(sno,'sna')
     addr = crawler.showSingleVal(sno,'ar')
     countDown = 4
