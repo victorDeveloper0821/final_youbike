@@ -21,9 +21,18 @@ def runCrawler():
 
 # 計算使用率並顯示於flask
 @app.task(ignore_result=True)
-def runAnalyse(sno,sdate):
+def runAnalyse(sno):
+    countDown = 4
+    date_list = []
+    avg_list = []
     run = ptc.DataConnection()
     print('begin to run analyzer')
-    dtime,avg_sbi = run.avg_use_rate(sno,sdate)
+    while countDown>1:
+        d = datetime.now().date()-timedelta(days=countDown)
+        date = d.strftime('%Y-%m-%d')
+        dtime,avg = run.avg_use_rate(sno,date)
+        date_list = date_list+dtime
+        avg_list = avg_list+avg
+        countDown = countDown-1
     print('done')
-    return dtime,avg_sbi
+    return date_list,avg_list

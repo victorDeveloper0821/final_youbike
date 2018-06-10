@@ -12,17 +12,8 @@ def home():
     return render_template('index.html')
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
-    countDown = 4
-    date_list = []
-    avg_list = []
-    while countDown>1:
-        d = datetime.now().date()-timedelta(days=countDown)
-        x = d.strftime('%Y-%m-%d')
-        res = runAnalyse.delay(sno,x)
-        dtime,avg = res.get()
-        date_list = date_list+dtime
-        avg_list = avg_list+avg
-        countDown = countDown-1
+    res = runAnalyse.delay(sno)
+    date_list,avg_list = res.result
     sname = crawler.showSingleVal(sno,'sna')
     addr = crawler.showSingleVal(sno,'ar')
     print(date_list,avg_list)
