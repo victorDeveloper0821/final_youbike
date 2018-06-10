@@ -13,14 +13,9 @@ def home():
     return render_template('index.html')
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
-    
-#    res = runAnalyse.delay(sno)
-#    date_list,avg_list = res.get()
-#    sname = crawler.showSingleVal(sno,'sna')
-#    addr = crawler.showSingleVal(sno,'ar')
-#    print(date_list,avg_list)
     sname = crawler.showSingleVal(sno,'sna')
     addr = crawler.showSingleVal(sno,'ar')
+    num = crawler.showSingleVal(sno,'sbi')
     countDown = 4
     date_list = []
     avg_list = []
@@ -36,7 +31,7 @@ def showData(sno):
     print('done')
     run.cursor.close()
     run.conn.close()
-    return render_template('visualData.html',sname=sname,addr=addr,values=avg_list,dt = date_list)
+    return render_template('visualData.html',sname=sname,addr=addr,values=avg_list,dt = date_list,num=num)
 @app.route('/api/data/<sno>',methods=['GET'])
 def showjson(sno):
     sno = str(sno)
