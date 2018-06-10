@@ -54,8 +54,7 @@ class DataConnection :
                 sbi_list.append(ave_sbi)
             period[index]=search_date+period[index]
             index+=1
-        self.cursor.close()
-        self.conn.close()
+
         return period,sbi_list
 
 if __name__ == '__main__' : 

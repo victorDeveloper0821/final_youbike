@@ -36,4 +36,6 @@ def runAnalyse(sno):
         avg_list = avg_list+avg
         countDown = countDown-1
     print('done')
+    run.cursor.close()
+    run.conn.close()
     return date_list,avg_list
