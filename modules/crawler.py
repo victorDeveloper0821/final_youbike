@@ -9,7 +9,7 @@ import requests
 import json
 from io import StringIO
 import datetime
-from modules.db import pgTestClass
+#from modules.db import pgTestClass
 
 r = requests.get('http://data.taipei/youbike')
 s = StringIO(r.text)
@@ -20,11 +20,7 @@ def showSingleVal(sno,key):
         print('unexpect error')
         return None
     info = data['retVal'].get(sno)
-    if key in info.keys():
-        return info[key]
-    else :
-        print('key:%s dosent exist'%key)
-        return None
+    return info[key]
 def showStation(sno):
     d = dict()
     dt = datetime.datetime.now()+datetime.timedelta(hours=8)
@@ -91,6 +87,5 @@ def putData(bike):
 if __name__=='__main__':
 # codes used for testing the functions .
 # When the python file is excuted as a single script , the following codes are excuted .
-    a = showAll()    
-#    print(showStation('0310'))
-    print(a)
+#    print(showSingleVal('0200','sno'))
+    print(showStation('0010'))
