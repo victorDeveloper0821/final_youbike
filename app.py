@@ -13,7 +13,7 @@ def home():
 @app.route('/visual/<sno>',methods=['GET'])
 def showData(sno):
     res = runAnalyse.delay(sno)
-    date_list,avg_list = res.result
+    date_list,avg_list = res.get()
     sname = crawler.showSingleVal(sno,'sna')
     addr = crawler.showSingleVal(sno,'ar')
     print(date_list,avg_list)
