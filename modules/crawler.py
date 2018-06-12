@@ -9,7 +9,7 @@ import requests
 import json
 from io import StringIO
 import datetime
-#from modules.db import pgTestClass
+from modules.db import pgTestClass
 
 r = requests.get('http://data.taipei/youbike')
 s = StringIO(r.text)
@@ -70,7 +70,6 @@ def showAll():
         post_id = '\''+'post_'+areaTocode(i['sarea'])+'\''
         stampTime = '\''+n.strftime("%Y-%m-%d %H:%M:%S")+'\''
         dSet = (sid,'\''+i['sna']+'\'',i['tot'],i['sbi'],post_id,stampTime,i['act'],i['bemp'],'\''+i['ar']+'\'')
-#        print(dSet)
         empList.append(dSet)
     return empList
 
